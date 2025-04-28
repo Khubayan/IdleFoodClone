@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://colf21unwtiiy"]
+
+[ext_resource type="PackedScene" uid="uid://x5uk8rmn6ymp" path="res://Scenes/Cashier/cashier.tscn" id="1_vrmm3"]
+[ext_resource type="Script" path="res://Scripts/Customer/customer.gd" id="2_v6w77"]
+[ext_resource type="Texture2D" uid="uid://bsk2jkdtdl2xj" path="res://Idle Assets/Sprites/UI/circle.png" id="3_g868p"]
+[ext_resource type="Texture2D" uid="uid://ebghh2smc3bw" path="res://Idle Assets/Sprites/UI/Coffee.png" id="4_mqltj"]
+[ext_resource type="FontFile" uid="uid://due6jbyye53ld" path="res://Idle Assets/Fonts/font_score.ttf" id="5_cq651"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbfpg"]
+font = ExtResource("5_cq651")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[node name="Customer" instance=ExtResource("1_vrmm3")]
+script = ExtResource("2_v6w77")
+
+[node name="Body" parent="Visuals" index="1"]
+unique_name_in_owner = true
+
+[node name="Face" parent="Visuals" index="2"]
+unique_name_in_owner = true
+
+[node name="HandLeft" parent="Visuals" index="3"]
+unique_name_in_owner = true
+
+[node name="HandRight" parent="Visuals" index="4"]
+unique_name_in_owner = true
+
+[node name="ItemBox" type="Control" parent="." index="2"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -142.0
+offset_right = -48.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="ItemBox" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g868p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemIMG" type="TextureRect" parent="ItemBox/TextureRect" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -33.0
+offset_right = 19.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mqltj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="ItemBox/TextureRect" index="1"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 56.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 88.0
+text = "3"
+label_settings = SubResource("LabelSettings_vbfpg")
+horizontal_alignment = 1
+vertical_alignment = 1
