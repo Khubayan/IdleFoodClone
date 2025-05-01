@@ -15,6 +15,10 @@ func spawn_customer() -> void:
 	#Get random sprites
 	var sprite_data: CustomerData = customer_sprites.pick_random()
 	customer_instance.set_sprites(sprite_data)
+	#Get random item and quantity
+	var random_item: Item = GameManager.get_random_item()
+	var random_quantity: int = randi_range(1, 3)
+	customer_instance.init_customer(random_item, random_quantity)
 	#Get random spawn position
 	var random_spawn_pos: Marker2D = spawn_positions.pick_random()
 	customer_instance.position = random_spawn_pos.position

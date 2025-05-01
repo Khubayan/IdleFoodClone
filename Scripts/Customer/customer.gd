@@ -6,7 +6,19 @@ class_name Customer
 @onready var hand_left: Sprite2D = %HandLeft
 @onready var hand_right: Sprite2D = %HandRight
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var item_box: Control = $ItemBox
+@onready var item_img: TextureRect = %ItemIMG
+@onready var item_label: Label = %ItemLabel
 
+var request_item: Item
+var request_quantity: int
+var current_order_status: int
+
+func init_customer(item: Item, quantity: int) -> void:
+	request_item = item
+	request_quantity = quantity
+	current_order_status = quantity
+	show_order_ui()
 
 func set_sprites(data: CustomerData) -> void:
 	body.texture = data.body
@@ -16,3 +28,9 @@ func set_sprites(data: CustomerData) -> void:
 
 func play_move_anim() -> void:
 	anim_player.play("move")
+
+func show_order_ui() -> void:
+	item_box.show()
+	item_img.texture = request_item.sprite
+	item_label.text = str(request_quantity)
+	
