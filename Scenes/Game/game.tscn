@@ -84,9 +84,11 @@ position = Vector2(700, 740)
 [node name="CashierManager" type="Node" parent="." node_paths=PackedStringArray("spawn_pos")]
 script = ExtResource("15_8e3kh")
 cashier_scene = ExtResource("6_w8pn2")
-spawn_pos = NodePath("Marker2D")
+spawn_pos = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="CashierManager"]
-position = Vector2(536, 1101)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(415, 1250)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
