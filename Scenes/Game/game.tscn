@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyppf4e1i6df7"]
+[gd_scene load_steps=16 format=3 uid="uid://dyppf4e1i6df7"]
 
 [ext_resource type="Texture2D" uid="uid://c0ufs2s0e0cdu" path="res://Idle Assets/Sprites/Fondo.png" id="1_q2w3n"]
 [ext_resource type="Texture2D" uid="uid://de7cv18ljdox7" path="res://Idle Assets/Sprites/Counter.png" id="2_rbr7j"]
@@ -6,14 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ebghh2smc3bw" path="res://Idle Assets/Sprites/UI/Coffee.png" id="4_knuka"]
 [ext_resource type="Texture2D" uid="uid://b57t06keioc6l" path="res://Idle Assets/Sprites/UI/Burger.png" id="5_t00wc"]
 [ext_resource type="PackedScene" uid="uid://x5uk8rmn6ymp" path="res://Scenes/Cashier/cashier.tscn" id="6_w8pn2"]
-[ext_resource type="Script" path="res://Scripts/Managers/customer_manager.gd" id="7_i3dc2"]
-[ext_resource type="Script" path="res://Data/customerData.gd" id="8_8wcxh"]
+[ext_resource type="Script" uid="uid://bvgw0eb6tak7d" path="res://Scripts/Managers/customer_manager.gd" id="7_i3dc2"]
+[ext_resource type="Script" uid="uid://b8ty10ffue7j1" path="res://Data/customerData.gd" id="8_8wcxh"]
 [ext_resource type="Resource" uid="uid://c4020vwassd4w" path="res://Data/customer_green.tres" id="9_wpo4j"]
 [ext_resource type="Resource" uid="uid://cpj1engjpaiap" path="res://Data/customer_pink.tres" id="10_dx4yf"]
 [ext_resource type="Resource" uid="uid://bd6ht01jpuite" path="res://Data/customer_purple.tres" id="11_ue8fo"]
 [ext_resource type="Resource" uid="uid://djq26cg6r7hg5" path="res://Data/customer_red.tres" id="12_nh4tr"]
 [ext_resource type="Resource" uid="uid://njakp3dd3wgf" path="res://Data/customer_yellow.tres" id="13_lrvqn"]
 [ext_resource type="PackedScene" uid="uid://colf21unwtiiy" path="res://Scenes/Customer/customer.tscn" id="14_l270h"]
+[ext_resource type="Script" uid="uid://3o3sup6b5f6w" path="res://Scripts/Managers/counter_manager.gd" id="15_6hf6c"]
 
 [node name="Game" type="Node2D"]
 
@@ -64,5 +65,22 @@ position = Vector2(-86, 205)
 
 [node name="BottomSpawnPos" type="Marker2D" parent="CustomerManager"]
 position = Vector2(-86, 650)
+
+[node name="CounterManager" type="Node" parent="." node_paths=PackedStringArray("counter_positions")]
+unique_name_in_owner = true
+script = ExtResource("15_6hf6c")
+counter_positions = [NodePath("Pos_0"), NodePath("Pos_1"), NodePath("Pos_2"), NodePath("Pos_3")]
+
+[node name="Pos_0" type="Marker2D" parent="CounterManager"]
+position = Vector2(370, 740)
+
+[node name="Pos_1" type="Marker2D" parent="CounterManager"]
+position = Vector2(480, 740)
+
+[node name="Pos_2" type="Marker2D" parent="CounterManager"]
+position = Vector2(590, 740)
+
+[node name="Pos_3" type="Marker2D" parent="CounterManager"]
+position = Vector2(700, 740)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]

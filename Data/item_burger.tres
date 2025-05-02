@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cah0kcqdmmk7g"]
 
-[ext_resource type="Script" path="res://Data/item.gd" id="1_xho2r"]
+[ext_resource type="Script" uid="uid://dlaobkvn62bcv" path="res://Data/item.gd" id="1_xho2r"]
 [ext_resource type="Texture2D" uid="uid://b57t06keioc6l" path="res://Idle Assets/Sprites/UI/Burger.png" id="2_xrm33"]
 
 [resource]
