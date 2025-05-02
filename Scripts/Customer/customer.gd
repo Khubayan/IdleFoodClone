@@ -15,12 +15,14 @@ var request_quantity: int
 var current_order_status: int
 
 var counter_pos: Vector2
+var waiting_order: bool
+var being_served: bool 
 
 func init_customer(item: Item, quantity: int) -> void:
 	request_item = item
 	request_quantity = quantity
 	current_order_status = quantity
-	show_order_ui()
+
 
 func move_to_counter() -> void:
 	play_move_anim()
@@ -29,7 +31,11 @@ func move_to_counter() -> void:
 	tween.tween_interval(0.2)
 	tween.tween_property(self, "position", counter_pos, 1.0)
 	tween.tween_interval(0.5)
-	tween.finished.connect(func(): anim_player.play("idle"))
+	tween.finished.connect(func():
+		anim_player.play("idle")
+		waiting_order = true
+		GameManager.on_customer_request.emit(self)
+	)
 	
 
 func set_sprites(data: CustomerData) -> void:
