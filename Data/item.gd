@@ -20,7 +20,7 @@ enum  ItemType {
 @export var upgrade_multi: float = 1.3
 
 @export_group("Profit")
-@export var profit_cost: float = 4.0
+@export var profit: float = 4.0
 @export var profit_multi: float = 1.2
 
 @export_category("Levels")

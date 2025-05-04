@@ -49,6 +49,7 @@ scale = Vector2(0.42, 0.42)
 texture = ExtResource("5_t00wc")
 
 [node name="CustomerManager" type="Node" parent="." node_paths=PackedStringArray("spawn_positions")]
+unique_name_in_owner = true
 script = ExtResource("7_i3dc2")
 spawn_positions = [NodePath("TopSpawnPos"), NodePath("BottomSpawnPos")]
 customer_sprites = Array[ExtResource("8_8wcxh")]([ExtResource("9_wpo4j"), ExtResource("10_dx4yf"), ExtResource("11_ue8fo"), ExtResource("12_nh4tr"), ExtResource("13_lrvqn")])

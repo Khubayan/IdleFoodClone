@@ -10,6 +10,8 @@ var counter: Dictionary[int, Customer] = {
 	3: null
 }
 
+func _ready() -> void:
+	GameManager.on_customer_order_completed.connect(_on_customer_order_completed)
 
 func get_free_index() -> int:
 	for key in counter:
@@ -26,3 +28,16 @@ func assign_customer(customer: Customer) -> void:
 	counter[index] = customer
 	var free_counter_pos: Vector2 = counter_positions[index].position
 	customer.counter_pos = free_counter_pos
+
+func get_first_available_customer() -> Customer:
+	for customer: Customer in counter.values():
+		if customer != null:
+			if customer.waiting_order and not customer.being_served:
+				return customer
+	return null
+
+func _on_customer_order_completed(customer: Customer) -> void:
+	for index: int in counter:
+		if counter[index] == customer:
+			counter[index] = null
+		  
