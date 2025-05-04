@@ -51,7 +51,7 @@ func receive_order() -> void:
 func order_completed() -> void:
 	item_box.hide()
 	waiting_order = false
-	var counter_top_pos: float = counter_pos.y - 180
+	var counter_top_pos: float = counter_pos.y - 130
 	
 	var tween := create_tween()
 	tween.tween_property(self, "position", Vector2(counter_pos.x, counter_top_pos), 1.0)

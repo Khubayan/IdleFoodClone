@@ -53,6 +53,7 @@ func delivered_order() -> void:
 	await get_tree().create_timer(1.1).timeout
 	current_customer.receive_order()
 	GameManager.current_coins += item_request.profit
+	GameManager.play_coin_vfx(global_position)
 	
 	if not current_customer.current_order_status <= 0:
 		move_to_item_position()
