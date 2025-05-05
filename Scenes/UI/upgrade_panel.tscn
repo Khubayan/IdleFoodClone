@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbfxiw5cigjaq"]
+[gd_scene load_steps=12 format=3 uid="uid://cbfxiw5cigjaq"]
 
 [ext_resource type="LabelSettings" uid="uid://rlvjr47yqfp6" path="res://Settings/label_48_Black.tres" id="1_1pv54"]
+[ext_resource type="Script" uid="uid://l5hn2yhtwxsc" path="res://Scripts/UI/upgrade_panel.gd" id="1_8cuns"]
 [ext_resource type="FontFile" uid="uid://due6jbyye53ld" path="res://Idle Assets/Fonts/font_score.ttf" id="2_8cuns"]
 [ext_resource type="Texture2D" uid="uid://d4cadubwkscd8" path="res://Idle Assets/Sprites/UI/star.png" id="3_ivf60"]
 [ext_resource type="Texture2D" uid="uid://c0u5tg1276wyi" path="res://Idle Assets/Sprites/UI/coin_gold.png" id="4_uni8q"]
@@ -47,6 +48,7 @@ offset_right = -530.0
 offset_bottom = -1270.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8cuns")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -57,21 +59,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dkib")
 
-[node name="Level" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -77.5
-offset_top = 20.0
-offset_right = 77.5
-offset_bottom = 121.0
-grow_horizontal = 2
-text = "Level 1
-"
-label_settings = ExtResource("1_1pv54")
-
 [node name="ItemName" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,6 +72,21 @@ offset_bottom = 175.0
 grow_horizontal = 2
 text = "Coffee"
 label_settings = SubResource("LabelSettings_4mn1j")
+
+[node name="Level" type="Label" parent="Panel/ItemName"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = -85.0
+offset_right = 83.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "Level 0
+"
+label_settings = ExtResource("1_1pv54")
 
 [node name="StarHBox" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
@@ -116,6 +120,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(420, 36)
 layout_mode = 1
 anchors_preset = 8
@@ -157,11 +162,6 @@ texture = ExtResource("4_uni8q")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Profit" type="Label" parent="Panel/ProfitHBox"]
-layout_mode = 2
-text = "1"
-label_settings = ExtResource("1_1pv54")
-
 [node name="TimeHBox" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -185,12 +185,28 @@ texture = ExtResource("5_6w3ml")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CookTime" type="Label" parent="Panel/TimeHBox"]
+[node name="Profit" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 2
+offset_left = 120.0
+offset_top = 410.5
+offset_right = 137.0
+offset_bottom = 459.5
+text = "1"
+label_settings = ExtResource("1_1pv54")
+
+[node name="CookTime" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 398.0
+offset_top = 411.0
+offset_right = 491.0
+offset_bottom = 460.0
 text = "10 S"
 label_settings = ExtResource("1_1pv54")
 
 [node name="UpgradeButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 1
 anchors_preset = 8
