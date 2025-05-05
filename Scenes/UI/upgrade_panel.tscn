@@ -89,6 +89,7 @@ text = "Level 0
 label_settings = ExtResource("1_1pv54")
 
 [node name="StarHBox" type="HBoxContainer" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 90.0
 offset_top = 205.0
@@ -224,3 +225,5 @@ theme_override_fonts/font = ExtResource("2_8cuns")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_ga731")
 text = "50"
+
+[connection signal="pressed" from="Panel/UpgradeButton" to="." method="_on_upgrade_button_pressed"]

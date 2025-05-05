@@ -10,7 +10,7 @@ const COIN_VFX = preload("res://Scenes/VFX/coin_vfx.tscn")
 var coffee_counter_pos := Vector2(415, 1250)
 var burger_counter_pos := Vector2(665, 1250)
 
-var current_coins: int = 0
+var current_coins: int = 1000000
 
 func play_coin_vfx(spawn_pos: Vector2) -> void:
 	var coin_instance: GPUParticles2D = COIN_VFX.instantiate()
