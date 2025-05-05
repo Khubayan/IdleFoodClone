@@ -15,6 +15,7 @@ var current_coins: int = 0
 func play_coin_vfx(spawn_pos: Vector2) -> void:
 	var coin_instance: GPUParticles2D = COIN_VFX.instantiate()
 	get_tree().root.add_child(coin_instance)
+	SoundManager.play_coins()
 	var new_pos: Vector2 = Vector2(spawn_pos.x, spawn_pos.y - 50)
 	coin_instance.global_position = new_pos
 	coin_instance.emitting = true
