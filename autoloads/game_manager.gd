@@ -37,3 +37,19 @@ func get_item_counter_pos(item: Item) -> Vector2:
 		Item.ItemType.Burger:
 			return burger_counter_pos
 	return Vector2.ZERO
+
+func format_coins(amount: int) -> String:
+	var suffixes: Array[String] = ["", "K", "M", "B", "T", "Q"]
+	var index: int = 0
+	var display_amount := float(amount)
+	
+	while display_amount >= 1000 and index < suffixes.size() - 1:
+		display_amount = display_amount / 1000
+		index += 1
+	if index == 0:
+		return str(int(ceil(display_amount)))
+	else:
+		return str(round_to_one_decimal(display_amount)) + suffixes[index]
+
+func round_to_one_decimal(value: float) -> float:
+	return floor(value * 10 + 0.5) / 10

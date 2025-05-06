@@ -31,16 +31,16 @@ class_name GameUI
 
 
 func _process(delta: float) -> void:
-	current_coins.text = str(GameManager.current_coins)
+	current_coins.text = str(GameManager.format_coins(GameManager.current_coins))
 
 func _ready() -> void:
 	coffee_panel.init_upgrade_panel(GameManager.item_coffee)
 	burger_panel.init_upgrade_panel(GameManager.item_burger)
-	new_cashier_1.text = str(cashier_1_cost)
-	new_cashier_2.text = str(cashier_2_cost)
-	new_cashier_3.text = str(cashier_3_cost)
-	faster_coffee.text = str(faster_cofee_cost)
-	faster_burger.text = str(faster_burger_cost)
+	new_cashier_1.text = GameManager.format_coins(cashier_1_cost)
+	new_cashier_2.text = GameManager.format_coins(cashier_2_cost)
+	new_cashier_3.text = GameManager.format_coins(cashier_3_cost)
+	faster_coffee.text = GameManager.format_coins(faster_cofee_cost)
+	faster_burger.text = GameManager.format_coins(faster_burger_cost)
 
 func show_hide_shop_panel() -> void:
 	shop.visible = true if not shop.visible else false
