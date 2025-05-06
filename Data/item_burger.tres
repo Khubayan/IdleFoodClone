@@ -14,4 +14,4 @@ upgrade_cost = 4.0
 upgrade_multi = 1.4
 profit = 4.0
 profit_multi = 1.2
-max_leve = 75
+max_level = 75

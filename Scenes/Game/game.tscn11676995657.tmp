@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyppf4e1i6df7"]
+[gd_scene load_steps=29 format=3 uid="uid://dyppf4e1i6df7"]
 
 [ext_resource type="Texture2D" uid="uid://c0ufs2s0e0cdu" path="res://Idle Assets/Sprites/Fondo.png" id="1_q2w3n"]
 [ext_resource type="Texture2D" uid="uid://de7cv18ljdox7" path="res://Idle Assets/Sprites/Counter.png" id="2_rbr7j"]
@@ -21,15 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://irvy7hi01yaq" path="res://Idle Assets/Sprites/UI/Arrow.png" id="19_lemb1"]
 [ext_resource type="Texture2D" uid="uid://c0u5tg1276wyi" path="res://Idle Assets/Sprites/UI/coin_gold.png" id="20_nxex1"]
 [ext_resource type="FontFile" uid="uid://due6jbyye53ld" path="res://Idle Assets/Fonts/font_score.ttf" id="21_pa3qg"]
-[ext_resource type="Texture2D" uid="uid://dyu61uavk3h3v" path="res://Idle Assets/Sprites/UI/arrowUp.png" id="22_2lc0x"]
 [ext_resource type="Texture2D" uid="uid://powy61lxqjfh" path="res://Idle Assets/Sprites/Characters/face_b.png" id="22_pa3qg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2lc0x"]
 font = ExtResource("21_pa3qg")
 font_size = 70
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ti5a"]
-bg_color = Color(0.351563, 0.351563, 0.351563, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lc0x"]
 bg_color = Color(0.76662, 0.76662, 0.766619, 1)
@@ -218,44 +214,7 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_2lc0x")
 
-[node name="BottomBar" type="Control" parent="GameUI"]
-custom_minimum_size = Vector2(0, 130)
-layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Panel" type="Panel" parent="GameUI/BottomBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4ti5a")
-
-[node name="ShopButton" type="Button" parent="GameUI/BottomBar/Panel"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -37.5
-offset_right = -20.0
-offset_bottom = 37.5
-grow_horizontal = 0
-grow_vertical = 2
-icon = ExtResource("22_2lc0x")
-expand_icon = true
-
 [node name="Shop" type="Control" parent="GameUI"]
-visible = false
 custom_minimum_size = Vector2(700, 1000)
 layout_mode = 3
 anchors_preset = 8
@@ -600,7 +559,6 @@ text = "50"
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
-[connection signal="pressed" from="GameUI/BottomBar/Panel/ShopButton" to="GameUI" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard/NewCashier1" to="GameUI" method="_on_new_cashier_1_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterCoffeeCard/FasterCoffee" to="GameUI" method="_on_faster_coffee_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard2/NewCashier2" to="GameUI" method="_on_new_cashier_2_pressed"]

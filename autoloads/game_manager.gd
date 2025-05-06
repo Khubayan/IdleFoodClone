@@ -2,9 +2,13 @@ extends Node
 
 signal on_customer_request(customer: Customer)
 signal on_customer_order_completed(customer: Customer)
+signal on_spawn_new_cashier
 
-const ITEM_BURGER = preload("res://Data/item_burger.tres")
-const ITEM_COFFE = preload("res://Data/item_coffe.tres")
+
+@export var item_coffee: Item
+@export var item_burger: Item
+
+
 const COIN_VFX = preload("res://Scenes/VFX/coin_vfx.tscn")
 
 var coffee_counter_pos := Vector2(415, 1250)
@@ -23,7 +27,7 @@ func play_coin_vfx(spawn_pos: Vector2) -> void:
 
 
 func get_random_item() -> Item:
-	var items: Array = [ITEM_BURGER, ITEM_COFFE]
+	var items: Array = [item_burger, item_coffee]
 	return items.pick_random()
 
 func get_item_counter_pos(item: Item) -> Vector2:
