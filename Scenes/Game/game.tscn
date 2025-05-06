@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyppf4e1i6df7"]
+[gd_scene load_steps=37 format=3 uid="uid://dyppf4e1i6df7"]
 
 [ext_resource type="Texture2D" uid="uid://c0ufs2s0e0cdu" path="res://Idle Assets/Sprites/Fondo.png" id="1_q2w3n"]
 [ext_resource type="Texture2D" uid="uid://de7cv18ljdox7" path="res://Idle Assets/Sprites/Counter.png" id="2_rbr7j"]
@@ -23,6 +23,7 @@
 [ext_resource type="FontFile" uid="uid://due6jbyye53ld" path="res://Idle Assets/Fonts/font_score.ttf" id="21_pa3qg"]
 [ext_resource type="Texture2D" uid="uid://dyu61uavk3h3v" path="res://Idle Assets/Sprites/UI/arrowUp.png" id="22_2lc0x"]
 [ext_resource type="Texture2D" uid="uid://powy61lxqjfh" path="res://Idle Assets/Sprites/Characters/face_b.png" id="22_pa3qg"]
+[ext_resource type="Texture2D" uid="uid://cvn1d3do755wd" path="res://Idle Assets/Sprites/UI/gear.png" id="23_4ti5a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2lc0x"]
 font = ExtResource("21_pa3qg")
@@ -54,6 +55,27 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdpw"]
 bg_color = Color(0.241737, 0.700877, 0.426944, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gqeb"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_7pdpw"]
+font = ExtResource("21_pa3qg")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqd4u"]
+font = ExtResource("21_pa3qg")
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l3pd"]
+bg_color = Color(0.115328, 0.715123, 0.359393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3jd4"]
+bg_color = Color(0.101694, 0.662454, 0.815648, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -252,6 +274,23 @@ offset_bottom = 37.5
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("22_2lc0x")
+expand_icon = true
+
+[node name="OptionsButton" type="Button" parent="GameUI/BottomBar/Panel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -50.0
+offset_right = -148.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("23_4ti5a")
 expand_icon = true
 
 [node name="Shop" type="Control" parent="GameUI"]
@@ -597,12 +636,106 @@ theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pdpw")
 text = "50"
 
+[node name="Options" type="Control" parent="GameUI"]
+visible = false
+custom_minimum_size = Vector2(650, 450)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -225.0
+offset_right = 325.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameUI/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gqeb")
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 20.0
+offset_right = 89.0
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_7pdpw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Options/Panel"]
+custom_minimum_size = Vector2(550, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -72.0
+offset_right = 275.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/Options/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_gqd4u")
+
+[node name="MusicHSlider" type="HSlider" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_1l3pd")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameUI/Options/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SFX
+"
+label_settings = SubResource("LabelSettings_gqd4u")
+
+[node name="SFXHSlider" type="HSlider" parent="GameUI/Options/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_d3jd4")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
 [connection signal="pressed" from="GameUI/BottomBar/Panel/ShopButton" to="GameUI" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomBar/Panel/OptionsButton" to="GameUI" method="_on_options_button_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard/NewCashier1" to="GameUI" method="_on_new_cashier_1_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterCoffeeCard/FasterCoffee" to="GameUI" method="_on_faster_coffee_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard2/NewCashier2" to="GameUI" method="_on_new_cashier_2_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterBurgerCard/FasterBurger" to="GameUI" method="_on_faster_burger_pressed"]
 [connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard3/NewCashier3" to="GameUI" method="_on_new_cashier_3_pressed"]
+[connection signal="value_changed" from="GameUI/Options/Panel/VBoxContainer/HBoxContainer/MusicHSlider" to="GameUI" method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="GameUI/Options/Panel/VBoxContainer/HBoxContainer2/SFXHSlider" to="GameUI" method="_on_sfxh_slider_value_changed"]

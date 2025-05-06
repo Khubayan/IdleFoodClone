@@ -9,6 +9,7 @@ class_name GameUI
 @export var faster_cofee_cost := 250
 @export var faster_burger_cost := 1500
 
+
 @onready var shop: Control = $Shop
 @onready var coffee_panel: UpgradePanel = $CoffeePanel
 @onready var burger_panel: UpgradePanel = $BurgerPanel
@@ -18,7 +19,7 @@ class_name GameUI
 @onready var new_cashier_card_2: Panel = %NewCashierCard2
 @onready var faster_burger_card: Panel = %FasterBurgerCard
 @onready var new_cashier_card_3: Panel = %NewCashierCard3
-
+@onready var options: Control = $Options
 
 @onready var current_coins: Label = %CurrentCoins
 @onready var new_cashier_1: Button = %NewCashier1
@@ -100,3 +101,17 @@ func _on_new_cashier_3_pressed() -> void:
 
 func _on_shop_button_pressed() -> void:
 	show_hide_shop_panel()
+
+
+func _on_music_h_slider_value_changed(value: float) -> void:
+	var music_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(music_index, linear_to_db(value))
+
+
+func _on_sfxh_slider_value_changed(value: float) -> void:
+	var sfx_index = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value))
+
+
+func _on_options_button_pressed() -> void:
+	options.visible = true if not options.visible else false
